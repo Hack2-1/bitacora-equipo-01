@@ -4,6 +4,8 @@ from flask import Flask, jsonify
 
 from db import init_app
 
+from rutas.activos import bp as activos_bp
+
 
 def create_app():
     """Crea la aplicación e inicializa la base de datos."""
@@ -12,6 +14,7 @@ def create_app():
 
     Path(app.instance_path).mkdir(parents=True, exist_ok=True)
     init_app(app)
+    app.register_blueprint(activos_bp)
 
     @app.get("/api/salud")
     def salud():
