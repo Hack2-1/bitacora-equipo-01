@@ -22,7 +22,10 @@ def create_app():
 
 
 app = create_app()
+from rutas.incidentes import bp_incidentes 
+app.register_blueprint(bp_incidentes)
 
 if __name__ == "__main__":
     # El modo depuración es solo para desarrollo local.
     app.run(debug=True, port=5000)
+
